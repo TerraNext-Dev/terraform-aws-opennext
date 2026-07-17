@@ -45,7 +45,7 @@ resource "aws_lambda_function_url" "this" {
 }
 
 resource "aws_lambda_permission" "this" {
-  count         = var.create_function_url && var.url_authorization_type == "NONE" ? 1 : 0
+  count         = var.create_function_url && var.url_authorization_type == "NONE" && var.create_function_url_permissions ? 1 : 0
   statement_id  = "FunctionURLAllowInvokeAction"
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.this.function_name
@@ -53,7 +53,7 @@ resource "aws_lambda_permission" "this" {
 }
 
 resource "aws_lambda_permission" "this_url" {
-  count                  = var.create_function_url && var.url_authorization_type == "NONE" ? 1 : 0
+  count                  = var.create_function_url && var.url_authorization_type == "NONE" && var.create_function_url_permissions ? 1 : 0
   statement_id           = "FunctionURLAllowPublicAccess"
   function_name          = aws_lambda_function.this.function_name
   principal              = "*"
