@@ -102,6 +102,7 @@ TerraNext provides full coverage of the [OpenNext recommended AWS architecture](
 | `server_iam_execution_policy_statements`             | `list(object({effect, actions, resources}))` | `[]`    | Additional IAM policy statements for the server function execution role             |
 | `image_optimization_iam_execution_policy_statements` | `list(object({effect, actions, resources}))` | `[]`    | Additional IAM policy statements for the image optimization function execution role |
 | `warmer_function_enabled`                            | `bool`                                       | `true`  | Whether to create a warmer function to reduce cold starts                           |
+| `create_function_url_permissions`                    | `bool`                                       | `true`  | Whether to create explicit `aws_lambda_permission` resources for function URLs. Set to `false` to avoid `ResourceConflictException` on fresh deployments when `authorization_type = "NONE"` (AWS auto-creates these permissions). |
 
 ### Assets (S3)
 
