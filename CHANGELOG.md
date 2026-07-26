@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.2.0](https://github.com/TerraNext-Dev/terraform-aws-opennext/compare/v3.1.0...v3.2.0) (2026-07-26)
+
+
+### Features
+
+* add create_function_url_permissions variable to skip explicit permissions ([#41](https://github.com/TerraNext-Dev/terraform-aws-opennext/issues/41)) ([d9ff9a6](https://github.com/TerraNext-Dev/terraform-aws-opennext/commit/d9ff9a679cb20a8209348082e1c631a66d692e3b))
+
 ## [3.1.0](https://github.com/TerraNext-Dev/terraform-aws-opennext/compare/v3.0.0...v3.1.0) (2026-04-19)
 
 
