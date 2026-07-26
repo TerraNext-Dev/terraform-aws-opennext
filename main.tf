@@ -93,6 +93,8 @@ module "server_function" {
   memory_size   = var.server_memory_size
   streaming     = var.server_streaming
 
+  create_function_url_permissions = var.create_function_url_permissions
+
   source_dir = "${local.opennext_root_build_path}/server-functions/default"
   output_dir = "${local.opennext_root_build_path}/.build/"
 
@@ -138,6 +140,8 @@ module "image_optimization_function" {
   description   = "Next.js image optimization function for ${var.name}"
   memory_size   = 512
 
+  create_function_url_permissions = var.create_function_url_permissions
+
   source_dir = "${local.opennext_root_build_path}/image-optimization-function/"
   output_dir = "${local.opennext_root_build_path}/.build/"
 
@@ -163,6 +167,8 @@ module "revalidation_function" {
   function_name = "${var.slug}NextJSRevalidation"
   description   = "Next.js ISR revalidation function for ${var.name}"
   memory_size   = 128
+
+  create_function_url_permissions = var.create_function_url_permissions
 
   source_dir = "${local.opennext_root_build_path}/revalidation-function/"
   output_dir = "${local.opennext_root_build_path}/.build/"
