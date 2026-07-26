@@ -75,6 +75,12 @@ variable "create_function_url" {
   default     = true
 }
 
+variable "create_function_url_permissions" {
+  type        = bool
+  description = "Whether to explicitly create resource-based policy statements for the function URL. When authorization_type is NONE, the AWS API automatically adds these permissions on function URL creation. Set to false to avoid ResourceConflictException errors on fresh deployments with recent AWS provider versions. If changing from true to false on an existing deployment, first remove the permissions from state with `terraform state rm` to avoid deleting them from AWS. If changing from false back to true after the function URL exists, you will usually need to `terraform import` the auto-created permissions into state (or keep this set to false)."
+  default     = true
+}
+
 variable "streaming" {
   type        = bool
   description = "Whether to enable response streaming on the Lambda function URL"
