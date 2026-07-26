@@ -290,6 +290,12 @@ variable "warmer_function_enabled" {
   default     = true
 }
 
+variable "create_function_url_permissions" {
+  type        = bool
+  description = "Whether to explicitly create resource-based policy statements (lambda:InvokeFunctionUrl, lambda:InvokeFunction) for Lambda function URLs. When authorization_type is NONE, the AWS API automatically adds these permissions on function URL creation. Set to false to avoid ResourceConflictException errors on fresh deployments with recent AWS provider versions (>= 6.x). If you change this from true to false after the permissions are already in Terraform state, Terraform will plan to delete them. To stop managing them without removing them from AWS, run `terraform state rm` on the affected aws_lambda_permission resources before applying."
+  default     = true
+}
+
 # Assets (S3)
 
 variable "use_account_regional_buckets" {
