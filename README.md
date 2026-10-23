@@ -40,7 +40,7 @@ module "terranext" {
 
 ![OpenNext AWS default recommended architecture](https://opennext.js.org/architecture.png)
 
-TerraNext provides full coverage of the [OpenNext recommended AWS architecture](https://opennext.js.org/aws/architecture):
+TerraNext provides full coverage of the [OpenNext recommended AWS architecture](https://opennext.js.org/aws/inner_workings/architecture):
 
 | Component                   | Architecture layer | TerraNext                                                                                                             |
 | --------------------------- | ------------------ | --------------------------------------------------------------------------------------------------------------------- |
