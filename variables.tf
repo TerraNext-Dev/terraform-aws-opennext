@@ -264,6 +264,12 @@ variable "server_memory_size" {
   default     = 512
 }
 
+variable "image_optimization_memory_size" {
+  description = "Memory size (in MB) for the OpenNext image optimization function. Lambda allocates CPU in proportion to memory, so a higher value optimizes images faster."
+  type        = number
+  default     = 1536
+}
+
 variable "server_iam_execution_policy_statements" {
   description = "Additional IAM policy statements to attach to the OpenNext server function execution role. This can be used to grant permissions for accessing other AWS resources from the server function."
   type = list(object({
