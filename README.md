@@ -144,7 +144,7 @@ CloudFront automatically serves both `example.com` and `www.example.com`, redire
 
 1. Build your Next.js app with OpenNext (`npx open-next build`), which outputs Lambda-compatible bundles and static assets
 2. TerraNext deploys each function build by OpenNext as a Lambda function
-3. Static assets are uploaded to S3
+3. Static assets are uploaded to S3. Files under `_next/static` are served with `Cache-Control: public,max-age=31536000,immutable`
 4. CloudFront routes requests to the right origin based on path patterns:
    - `/_next/static/*`, `/static/*`, and configured static paths go to S3
    - `/_next/image` goes to the Image Optimization Lambda
