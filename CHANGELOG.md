@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.3.0](https://github.com/TerraNext-Dev/terraform-aws-opennext/compare/v3.2.0...v3.3.0) (2026-11-25)
+
+
+### Features
+
+* add image_optimization_memory_size variable, defaulting to 1536 ([#86](https://github.com/TerraNext-Dev/terraform-aws-opennext/issues/86)) ([58a1864](https://github.com/TerraNext-Dev/terraform-aws-opennext/commit/58a1864c8c6a11fd9faea3d9fd98af314f91b92a))
+
 ## [3.2.0](https://github.com/TerraNext-Dev/terraform-aws-opennext/compare/v3.1.0...v3.2.0) (2026-07-26)
 
 
