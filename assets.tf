@@ -136,9 +136,9 @@ resource "aws_s3_object" "assets" {
   source       = "${local.opennext_root_build_path}/assets/${each.value}"
   source_hash  = filemd5("${local.opennext_root_build_path}/assets/${each.value}")
   content_type = lookup(local.content_type_lookup, split(".", each.value)[length(split(".", each.value)) - 1], "text/plain")
-  # Next.js puts a hash of the content or build in these paths, so browsers never need to check them again. The pattern
-  # also matches under a basePath.
-  cache_control = can(regex("(^|/)_next/static/", each.value)) ? "public,max-age=31536000,immutable" : null
+  # Only for the files Next.js puts a hash of the content or build in the path of. The pattern also matches under a
+  # basePath.
+  cache_control = can(regex("(^|/)_next/static/", each.value)) ? var.static_assets_cache_control : null
 
   depends_on = [aws_s3_bucket.assets]
   tags       = var.tags

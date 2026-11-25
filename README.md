@@ -107,11 +107,12 @@ TerraNext provides full coverage of the [OpenNext recommended AWS architecture](
 
 ### Assets (S3)
 
-| Name                           | Type     | Default | Description                                                                                                                                                                                                                                                                                                  |
-| ------------------------------ | -------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `use_account_regional_buckets` | `bool`   | `true`  | Use account-regional S3 namespace to avoid global naming conflicts                                                                                                                                                                                                                                           |
-| `upload_files`                 | `bool`   | `true`  | Whether to upload files to S3. If you apply with this set to `true` and later change it to `false`, Terraform may plan to delete the previously-managed S3 objects. To stop managing existing uploaded files without deleting them, remove those objects from Terraform state before setting this to `false` |
-| `replication_configuration`    | `object` | `null`  | Replication configuration for the assets S3 bucket                                                                                                                                                                                                                                                           |
+| Name                           | Type     | Default                               | Description                                                                                                                                                                                                                                                                                                  |
+| ------------------------------ | -------- | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `use_account_regional_buckets` | `bool`   | `true`                                | Use account-regional S3 namespace to avoid global naming conflicts                                                                                                                                                                                                                                           |
+| `upload_files`                 | `bool`   | `true`                                | Whether to upload files to S3. If you apply with this set to `true` and later change it to `false`, Terraform may plan to delete the previously-managed S3 objects. To stop managing existing uploaded files without deleting them, remove those objects from Terraform state before setting this to `false` |
+| `static_assets_cache_control`  | `string` | `"public,max-age=31536000,immutable"` | `Cache-Control` header for files under `_next/static`, whose paths include a content or build hash. Set to `null` to omit it. CloudFront may serve a previous value until invalidated                                                                                                                        |
+| `replication_configuration`    | `object` | `null`                                | Replication configuration for the assets S3 bucket                                                                                                                                                                                                                                                           |
 
 ### Cache (DynamoDB)
 
@@ -144,7 +145,7 @@ CloudFront automatically serves both `example.com` and `www.example.com`, redire
 
 1. Build your Next.js app with OpenNext (`npx open-next build`), which outputs Lambda-compatible bundles and static assets
 2. TerraNext deploys each function build by OpenNext as a Lambda function
-3. Static assets are uploaded to S3. Files under `_next/static` are served with `Cache-Control: public,max-age=31536000,immutable`
+3. Static assets are uploaded to S3. Files under `_next/static` are served with a long-lived `Cache-Control` header, set by `static_assets_cache_control`
 4. CloudFront routes requests to the right origin based on path patterns:
    - `/_next/static/*`, `/static/*`, and configured static paths go to S3
    - `/_next/image` goes to the Image Optimization Lambda
