@@ -99,6 +99,7 @@ TerraNext provides full coverage of the [OpenNext recommended AWS architecture](
 | `server_streaming`                                   | `bool`                                       | `false` | Enable response streaming on the server function for faster TTFB                    |
 | `server_environment_variables`                       | `map(string)`                                | `{}`    | Additional environment variables for the server Lambda function                     |
 | `server_memory_size`                                 | `number`                                     | `512`   | Memory size (in MB) for the server Lambda function                                  |
+| `image_optimization_memory_size`                     | `number`                                     | `1536`  | Memory size (in MB) for the image optimization function                             |
 | `server_iam_execution_policy_statements`             | `list(object({effect, actions, resources}))` | `[]`    | Additional IAM policy statements for the server function execution role             |
 | `image_optimization_iam_execution_policy_statements` | `list(object({effect, actions, resources}))` | `[]`    | Additional IAM policy statements for the image optimization function execution role |
 | `warmer_function_enabled`                            | `bool`                                       | `true`  | Whether to create a warmer function to reduce cold starts                           |

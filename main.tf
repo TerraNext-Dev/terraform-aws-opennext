@@ -138,7 +138,7 @@ module "image_optimization_function" {
 
   function_name = "${var.slug}NextJSImageOptimization"
   description   = "Next.js image optimization function for ${var.name}"
-  memory_size   = 512
+  memory_size   = var.image_optimization_memory_size
 
   create_function_url_permissions = var.create_function_url_permissions
 
