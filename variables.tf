@@ -316,6 +316,12 @@ variable "upload_files" {
   default     = true
 }
 
+variable "static_assets_cache_control" {
+  type        = string
+  description = "Cache-Control header for the files uploaded under _next/static. Their paths include a content or build hash, so by default browsers keep them for a year without checking again. Set to null to upload them without the header. CloudFront may keep serving a previous value until it is invalidated."
+  default     = "public,max-age=31536000,immutable"
+}
+
 variable "replication_configuration" {
   description = "Replication configuration for the assets S3 bucket."
   default     = null

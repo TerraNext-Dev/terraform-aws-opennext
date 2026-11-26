@@ -131,11 +131,12 @@ resource "aws_cloudfront_origin_access_control" "assets" {
 resource "aws_s3_object" "assets" {
   for_each = var.upload_files ? fileset("${local.opennext_root_build_path}/assets", "**") : toset([])
 
-  bucket       = aws_s3_bucket.assets.bucket
-  key          = "_assets/${each.value}"
-  source       = "${local.opennext_root_build_path}/assets/${each.value}"
-  source_hash  = filemd5("${local.opennext_root_build_path}/assets/${each.value}")
-  content_type = lookup(local.content_type_lookup, split(".", each.value)[length(split(".", each.value)) - 1], "text/plain")
+  bucket        = aws_s3_bucket.assets.bucket
+  key           = "_assets/${each.value}"
+  source        = "${local.opennext_root_build_path}/assets/${each.value}"
+  source_hash   = filemd5("${local.opennext_root_build_path}/assets/${each.value}")
+  content_type  = lookup(local.content_type_lookup, split(".", each.value)[length(split(".", each.value)) - 1], "text/plain")
+  cache_control = can(regex("(^|/)_next/static/", each.value)) ? var.static_assets_cache_control : null
 
   depends_on = [aws_s3_bucket.assets]
   tags       = var.tags
