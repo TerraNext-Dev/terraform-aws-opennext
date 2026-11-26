@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.3.1](https://github.com/TerraNext-Dev/terraform-aws-opennext/compare/v3.3.0...v3.3.1) (2026-11-26)
+
+
+### Bug Fixes
+
+* static asset cache control ([#90](https://github.com/TerraNext-Dev/terraform-aws-opennext/issues/90)) ([4daf958](https://github.com/TerraNext-Dev/terraform-aws-opennext/commit/4daf958051800d3adf3adb5f3fcab2cd18a7888f))
+
 ## [3.3.0](https://github.com/TerraNext-Dev/terraform-aws-opennext/compare/v3.2.0...v3.3.0) (2026-11-25)
 
 
